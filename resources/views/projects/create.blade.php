@@ -8,6 +8,9 @@
 </head>
 <body>
   <div id="app" class="container">
+
+    <example></example>
+
     @include ('projects.list')
                                           <!-- Use @submit.prevent to overrun deafaults and use axios to create projects -->
     <form method="POST" action="/projects" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
@@ -31,7 +34,7 @@
     </form>
   </div>
 
-  
+  <script src="/js/vendor.js"></script>
   <script src="/js/app.js"></script>
 </body>
 </html>
