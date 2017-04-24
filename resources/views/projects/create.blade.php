@@ -10,23 +10,23 @@
   <div id="app" class="container">
     @include ('projects.list')
                                           <!-- Use @submit.prevent to overrun deafaults and use axios to create projects -->
-    <form method="POST" action="/projects" @submit.prevent="onSubmit" @keydown="errors.clear($event.target.name)">
+    <form method="POST" action="/projects" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
       <div class="control">
         <label for="name" class="name">Project Name:</label>
                                                     <!-- v-model used to attached name to the projects table in app.js -->
-        <input type="text" name="name" class="input" v-model="name"> <!-- event.target.name -->
+        <input type="text" name="name" class="input" v-model="form.name"> <!-- event.target.name -->
                                 <!-- v-text used to bind text to element -->
-        <span class="help is-danger" v-if="errors.has('name')" v-text="errors.get('name')"></span>
+        <span class="help is-danger" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
       </div>
 
       <div class="control">
         <label for="description" class="description">Project Description:</label>
-        <input type="text" name="description" class="input" v-model="description">
-        <span class="help is-danger" v-text="errors.get('description')" v-if="errors.has('description')" ></span>
+        <input type="text" name="description" class="input" v-model="form.description">
+        <span class="help is-danger" v-text="form.errors.get('description')" v-if="form.errors.has('description')" ></span>
       </div>
 
       <div class="control">
-        <button class="button is-danger" :disabled="errors.any()">Create</button>
+        <button class="button is-danger" :disabled="form.errors.any()">Create</button>
       </div>
     </form>
   </div>
